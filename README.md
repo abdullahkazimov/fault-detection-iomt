@@ -5,6 +5,11 @@ Fault Detection in air handling units (AHU) of hospital
 First, make sure you have installed Python 3.13.9.
 
 ## Training
+Create virtual envvironment and activate it:
+```bash
+python -m venv venv
+```
+
 Install required libraries
 
 ```bash
