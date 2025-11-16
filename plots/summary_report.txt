@@ -1,0 +1,117 @@
+================================================================================
+REAL-TIME MODEL COMPARISON - FINAL SUMMARY
+AHU Fault Detection System
+================================================================================
+
+
+CENTRALIZED BASELINE
+--------------------------------------------------------------------------------
+Total Samples:       9,906
+Correct Predictions: 9,821
+Accuracy:            99.1419%
+Weighted F1:         99.1530%
+Macro F1:            99.0906%
+
+Per-Class Metrics:
+  Class 0 (Normal Condition):
+    Precision: 100.00%
+    Recall:    98.95%
+    F1:        99.47%
+    Support:   8064
+  Class 1 (Return Air Temp Sensor Fault):
+    Precision: 93.97%
+    Recall:    100.00%
+    F1:        96.89%
+    Support:   1325
+  Class 2 (Supply Fan Fault):
+    Precision: 100.00%
+    Recall:    100.00%
+    F1:        100.00%
+    Support:   288
+  Class 3 (Valve Position Fault):
+    Precision: 100.00%
+    Recall:    100.00%
+    F1:        100.00%
+    Support:   229
+
+Confusion Matrix:
+    7979      85       0       0
+       0    1325       0       0
+       0       0     288       0
+       0       0       0     229
+
+
+FEDAVG
+--------------------------------------------------------------------------------
+Total Samples:       9,906
+Correct Predictions: 8,549
+Accuracy:            86.3012%
+Weighted F1:         87.6378%
+Macro F1:            43.6354%
+
+Per-Class Metrics:
+  Class 0 (Normal Condition):
+    Precision: 100.00%
+    Recall:    89.58%
+    F1:        94.51%
+    Support:   8064
+  Class 1 (Return Air Temp Sensor Fault):
+    Precision: 66.72%
+    Recall:    100.00%
+    F1:        80.04%
+    Support:   1325
+  Class 2 (Supply Fan Fault):
+    Precision: 0.00%
+    Recall:    0.00%
+    F1:        0.00%
+    Support:   288
+  Class 3 (Valve Position Fault):
+    Precision: 0.00%
+    Recall:    0.00%
+    F1:        0.00%
+    Support:   229
+
+Confusion Matrix:
+    7224     144     441     255
+       0    1325       0       0
+       0     288       0       0
+       0     229       0       0
+
+
+EDGE-AWARE FL
+--------------------------------------------------------------------------------
+Total Samples:       9,906
+Correct Predictions: 8,719
+Accuracy:            88.0174%
+Weighted F1:         89.0832%
+Macro F1:            44.8617%
+
+Per-Class Metrics:
+  Class 0 (Normal Condition):
+    Precision: 100.00%
+    Recall:    91.69%
+    F1:        95.67%
+    Support:   8064
+  Class 1 (Return Air Temp Sensor Fault):
+    Precision: 72.09%
+    Recall:    100.00%
+    F1:        83.78%
+    Support:   1325
+  Class 2 (Supply Fan Fault):
+    Precision: 0.00%
+    Recall:    0.00%
+    F1:        0.00%
+    Support:   288
+  Class 3 (Valve Position Fault):
+    Precision: 0.00%
+    Recall:    0.00%
+    F1:        0.00%
+    Support:   229
+
+Confusion Matrix:
+    7394      85     268     317
+       0    1325       0       0
+       0     288       0       0
+       0     140      89       0
+
+================================================================================
