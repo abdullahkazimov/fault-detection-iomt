@@ -166,8 +166,8 @@ class HybridLSTMCNNAttention(nn.Module):
 # ============================================================================
 
 CENTRALIZED_MODEL_PATH = 'best_model_centralized_baseline.pth'
-FEDAVG_MODEL_PATH = 'model_fedavg_20251115_203130.pth'
-EDGE_AWARE_MODEL_PATH = 'model_edge_aware_full_edge_aware_full_moderate_conservative_offload_network_based_20251115_194741.pth'
+FEDAVG_MODEL_PATH = 'model_fedavg_20251117_195739.pth'
+EDGE_AWARE_MODEL_PATH = 'model_edge_aware_full_edge_aware_full_moderate_conservative_offload_network_based_20251117_194301.pth'
 TEST_DATA_PATH = 'test.csv'
 
 INPUT_DIM = 15

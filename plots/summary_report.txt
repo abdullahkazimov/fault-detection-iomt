@@ -44,74 +44,74 @@ Confusion Matrix:
 FEDAVG
 --------------------------------------------------------------------------------
 Total Samples:       9,906
-Correct Predictions: 8,549
-Accuracy:            86.3012%
-Weighted F1:         87.6378%
-Macro F1:            43.6354%
+Correct Predictions: 9,609
+Accuracy:            97.0018%
+Weighted F1:         97.2575%
+Macro F1:            88.9463%
 
 Per-Class Metrics:
   Class 0 (Normal Condition):
     Precision: 100.00%
-    Recall:    89.58%
-    F1:        94.51%
+    Recall:    96.74%
+    F1:        98.34%
     Support:   8064
   Class 1 (Return Air Temp Sensor Fault):
-    Precision: 66.72%
+    Precision: 93.44%
     Recall:    100.00%
-    F1:        80.04%
+    F1:        96.61%
     Support:   1325
   Class 2 (Supply Fan Fault):
-    Precision: 0.00%
-    Recall:    0.00%
-    F1:        0.00%
+    Precision: 91.50%
+    Recall:    97.22%
+    F1:        94.28%
     Support:   288
   Class 3 (Valve Position Fault):
-    Precision: 0.00%
-    Recall:    0.00%
-    F1:        0.00%
+    Precision: 53.28%
+    Recall:    88.65%
+    F1:        66.56%
     Support:   229
 
 Confusion Matrix:
-    7224     144     441     255
+    7801      85       0     178
        0    1325       0       0
-       0     288       0       0
-       0     229       0       0
+       0       8     280       0
+       0       0      26     203
 
 
 EDGE-AWARE FL
 --------------------------------------------------------------------------------
 Total Samples:       9,906
-Correct Predictions: 8,719
-Accuracy:            88.0174%
-Weighted F1:         89.0832%
-Macro F1:            44.8617%
+Correct Predictions: 9,389
+Accuracy:            94.7809%
+Weighted F1:         95.2297%
+Macro F1:            74.5778%
 
 Per-Class Metrics:
   Class 0 (Normal Condition):
     Precision: 100.00%
-    Recall:    91.69%
-    F1:        95.67%
+    Recall:    96.02%
+    F1:        97.97%
     Support:   8064
   Class 1 (Return Air Temp Sensor Fault):
-    Precision: 72.09%
+    Precision: 89.29%
     Recall:    100.00%
-    F1:        83.78%
+    F1:        94.34%
     Support:   1325
   Class 2 (Supply Fan Fault):
-    Precision: 0.00%
-    Recall:    0.00%
-    F1:        0.00%
+    Precision: 63.69%
+    Recall:    74.31%
+    F1:        68.59%
     Support:   288
   Class 3 (Valve Position Fault):
-    Precision: 0.00%
-    Recall:    0.00%
-    F1:        0.00%
+    Precision: 31.20%
+    Recall:    46.72%
+    F1:        37.41%
     Support:   229
 
 Confusion Matrix:
-    7394      85     268     317
+    7743      85       0     236
        0    1325       0       0
-       0     288       0       0
-       0     140      89       0
+       0      74     214       0
+       0       0     122     107
 
 ================================================================================

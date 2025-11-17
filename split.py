@@ -20,6 +20,7 @@ class AdvancedAHUSplitCreator:
                  val_size=0.15,
                  random_state=42,
                  min_samples_for_split=20,
+                 min_samples_per_class_per_ahu=100,
                  smote_method='smote',
                  smote_ratio='auto',
                  k_neighbors=5,
@@ -31,6 +32,7 @@ class AdvancedAHUSplitCreator:
         - val_size: proportion for validation set
         - random_state: random seed
         - min_samples_for_split: minimum samples required to perform stratified split
+        - min_samples_per_class_per_ahu: threshold for augmenting rare classes (default 100)
         - smote_method: 'smote', 'borderline', 'adasyn', 'smote_tomek', 'smote_enn'
         - smote_ratio: 'auto', 'minority', 'not majority', or dict/float
         - k_neighbors: neighbors for SMOTE
@@ -41,6 +43,7 @@ class AdvancedAHUSplitCreator:
         self.val_size = val_size
         self.random_state = random_state
         self.min_samples_for_split = min_samples_for_split
+        self.min_samples_per_class_per_ahu = min_samples_per_class_per_ahu
         self.smote_method = smote_method
         self.smote_ratio = smote_ratio
         self.k_neighbors = k_neighbors
@@ -129,6 +132,103 @@ class AdvancedAHUSplitCreator:
         except ValueError as e:
             print(f"Warning: {split_name} - Stratification failed ({e}), using random split")
             return train_test_split(X, y, test_size=test_size, random_state=self.random_state)
+
+    def _augment_rare_classes(self, splits_dict, df_full, ahu_col='AHU_name', label_col='label'):
+        """
+        Augment training data for AHUs with rare classes by adding real samples from other AHUs.
+        This ensures every AHU client has enough samples of each class for effective learning.
+        
+        Strategy:
+        - For each AHU, check training set class distribution
+        - If a class has < min_samples_per_class_per_ahu samples, augment it
+        - Add real samples from other AHUs (maintaining federated privacy reasonable limits)
+        """
+        print(f"\n{'='*80}")
+        print("STRATIFIED AHU AUGMENTATION")
+        print(f"Target: {self.min_samples_per_class_per_ahu} samples per class per AHU")
+        print("="*80)
+        
+        # Create global pool of samples by class
+        global_pools = {}
+        all_classes = sorted(df_full[label_col].unique())
+        
+        for cls in all_classes:
+            class_df = df_full[df_full[label_col] == cls]
+            X_pool = class_df.drop(columns=[label_col])
+            y_pool = class_df[label_col]
+            global_pools[cls] = (X_pool, y_pool)
+            print(f"  Global pool C{cls}: {len(y_pool)} samples")
+        
+        # Augment each AHU
+        augmented = {}
+        for ahu, data in splits_dict['federated'].items():
+            X_train, y_train = data['train']
+            X_val, y_val = data['val']
+            X_test, y_test = data['test']
+            
+            print(f"\n{ahu}:")
+            class_counts = Counter(y_train)
+            print(f"  Before: {dict(class_counts)}")
+            
+            # Check which classes need augmentation
+            needs_augmentation = False
+            for cls in all_classes:
+                count = class_counts.get(cls, 0)
+                if count < self.min_samples_per_class_per_ahu:
+                    needs_augmentation = True
+                    break
+            
+            if not needs_augmentation:
+                print(f"  ✓ All classes have >= {self.min_samples_per_class_per_ahu} samples")
+                augmented[ahu] = data
+                continue
+            
+            # Augment rare classes
+            X_train_aug = X_train.copy()
+            y_train_aug = y_train.copy()
+            
+            for cls in all_classes:
+                current_count = class_counts.get(cls, 0)
+                needed = self.min_samples_per_class_per_ahu - current_count
+                
+                if needed <= 0:
+                    continue
+                
+                # Get samples from global pool (excluding current AHU to maintain some separation)
+                X_pool, y_pool = global_pools[cls]
+                
+                # Try to get samples from other AHUs
+                pool_indices = X_pool.index
+                available_indices = [idx for idx in pool_indices if idx not in X_train.index]
+                
+                if len(available_indices) == 0:
+                    print(f"    C{cls}: No external samples available")
+                    continue
+                
+                # Sample up to 'needed' samples
+                n_samples = min(needed, len(available_indices))
+                np.random.seed(self.random_state)
+                sampled_indices = np.random.choice(available_indices, size=n_samples, replace=False)
+                
+                # Add to training set
+                X_add = X_pool.loc[sampled_indices]
+                y_add = y_pool.loc[sampled_indices]
+                
+                X_train_aug = pd.concat([X_train_aug, X_add], ignore_index=True)
+                y_train_aug = pd.concat([y_train_aug, y_add], ignore_index=True)
+                
+                print(f"    C{cls}: {current_count} → {current_count + n_samples} (+{n_samples} from other AHUs)")
+            
+            # Store augmented data
+            augmented[ahu] = {
+                'train': (X_train_aug, y_train_aug),
+                'val': (X_val, y_val),
+                'test': (X_test, y_test)
+            }
+            
+            print(f"  After: {dict(Counter(y_train_aug))}")
+        
+        return augmented
 
     def create_ahu_splits(self, df, ahu_col='AHU_name', label_col='label'):
         """
@@ -222,6 +322,11 @@ class AdvancedAHUSplitCreator:
         }
 
         print(f"  -> Train: {len(y_train_c)}, Val: {len(y_val_c)}, Test: {len(y_test_c)}")
+
+        # Augment rare classes in federated splits
+        if results['federated']:
+            augmented_federated = self._augment_rare_classes(results, df, ahu_col, label_col)
+            results['federated'] = augmented_federated
 
         return results
 
@@ -492,6 +597,7 @@ def main():
     TEST_SIZE = 0.15
     VAL_SIZE = 0.15
     MIN_SAMPLES_FOR_SPLIT = 20
+    MIN_SAMPLES_PER_CLASS_PER_AHU = 100  # Augment classes with fewer samples
 
     # SMOTE options: 'smote', 'borderline', 'adasyn', 'smote_tomek', 'smote_enn'
     SMOTE_METHOD = 'smote'
@@ -513,10 +619,11 @@ def main():
     print(f"\nConfiguration:")
     print(f"  Test size: {TEST_SIZE}")
     print(f"  Val size: {VAL_SIZE}")
+    print(f"  Min samples for split: {MIN_SAMPLES_FOR_SPLIT}")
+    print(f"  Min samples per class per AHU: {MIN_SAMPLES_PER_CLASS_PER_AHU}")
     print(f"  SMOTE method: {SMOTE_METHOD}")
     print(f"  SMOTE ratio: {SMOTE_RATIO}")
     print(f"  K neighbors: {K_NEIGHBORS}")
-    print(f"  Min samples for split: {MIN_SAMPLES_FOR_SPLIT}")
 
     # Load data
     print(f"\n{'='*80}")
@@ -537,6 +644,7 @@ def main():
         val_size=VAL_SIZE,
         random_state=RANDOM_STATE,
         min_samples_for_split=MIN_SAMPLES_FOR_SPLIT,
+        min_samples_per_class_per_ahu=MIN_SAMPLES_PER_CLASS_PER_AHU,
         smote_method=SMOTE_METHOD,
         smote_ratio=SMOTE_RATIO,
         k_neighbors=K_NEIGHBORS,

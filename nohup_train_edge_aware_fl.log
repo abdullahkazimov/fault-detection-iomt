@@ -1,0 +1,548 @@
+nohup: ignoring input
+Testing model creation...
+Model parameters: 6,749,444 (~6.7M)
+Input shape: torch.Size([32, 15])
+Output shape: torch.Size([32, 4])
+✓ Model works!
+================================================================================
+EDGE-AWARE FL WITH ABLATION STUDY SUPPORT
+================================================================================
+Random seed set to 42 for reproducibility
+
+Ablation Configuration:
+  Study 1 (Components): full_edge_aware
+    - Adaptive Epochs: True (conservative)
+    - Adaptive Weights: True (full)
+    - Smart Selection: True
+  Study 2 (Offloading): network_based
+  Study 3 (Weights): full
+  Study 4 (Thresholds): moderate (Battery≥20%, CPU≥30%)
+  Study 5 (Epochs): conservative
+================================================================================
+
+================================================================================
+EDGE-AWARE FL - CUDA VERSION
+================================================================================
+Device: cuda
+CUDA Device: Tesla T4
+
+Loading data...
+AHUs: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+ahu_1: train=21324, val=1239
+ahu_2: train=22112, val=1238
+ahu_3: train=22616, val=1239
+ahu_4: train=21364, val=1239
+ahu_5: train=20572, val=1238
+ahu_6: train=22980, val=1239
+ahu_8: train=19216, val=1239
+Test: 9906
+
+Edge Devices:
+  ahu_1: CPU=85, Battery=90%, BW=50Mbps
+  ahu_2: CPU=70, Battery=75%, BW=30Mbps
+  ahu_3: CPU=90, Battery=95%, BW=100Mbps
+  ahu_4: CPU=60, Battery=60%, BW=20Mbps
+  ahu_5: CPU=80, Battery=85%, BW=40Mbps
+  ahu_6: CPU=75, Battery=70%, BW=35Mbps
+  ahu_8: CPU=65, Battery=65%, BW=25Mbps
+
+Creating model...
+Checking baseline model at best_model_centralized_baseline.pth...
+  Baseline model has 4 classes
+Using num_classes=4 from baseline model
+Input dim: 16, Num classes: 4
+Loading baseline model weights from best_model_centralized_baseline.pth...
+✓ Baseline model loaded successfully!
+Parameters: 6,749,700
+
+Training Edge-Aware FL for 40 rounds...
+
+Round 1/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=18.6s, battery=89.7%, F1=95.9%
+  ahu_2: epochs=4, time=18.5s, battery=74.7%, F1=95.7%
+  ahu_3: epochs=4, time=19.0s, battery=94.7%, F1=99.0%
+  ahu_4: epochs=4, time=18.1s, battery=59.7%, F1=99.9%
+  ahu_5: epochs=4, time=17.5s, battery=84.7%, F1=97.6%
+  ahu_6: epochs=4, time=19.5s, battery=69.7%, F1=100.0%
+  ahu_8: epochs=4, time=16.4s, battery=64.7%, F1=97.2%
+  Global: Acc=93.07%, F1=93.90%, F1(M)=65.71%
+  ✓ Best: 93.90%
+
+Round 2/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=18.0s, battery=89.4%, F1=98.5%
+  ahu_2: epochs=4, time=18.7s, battery=74.4%, F1=95.7%
+  ahu_3: epochs=4, time=19.2s, battery=94.4%, F1=99.0%
+  ahu_4: epochs=4, time=18.5s, battery=59.4%, F1=99.9%
+  ahu_5: epochs=4, time=17.6s, battery=84.4%, F1=98.1%
+  ahu_6: epochs=4, time=19.7s, battery=69.3%, F1=100.0%
+  ahu_8: epochs=4, time=16.5s, battery=64.5%, F1=99.2%
+  Global: Acc=90.75%, F1=92.34%, F1(M)=60.28%
+
+Round 3/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=18.5s, battery=89.1%, F1=95.9%
+  ahu_2: epochs=4, time=19.4s, battery=74.1%, F1=99.3%
+  ahu_3: epochs=4, time=19.3s, battery=94.0%, F1=95.3%
+  ahu_4: epochs=4, time=18.2s, battery=59.1%, F1=99.0%
+  ahu_5: epochs=4, time=17.6s, battery=84.1%, F1=98.1%
+  ahu_6: epochs=4, time=19.6s, battery=69.0%, F1=100.0%
+  ahu_8: epochs=4, time=16.6s, battery=64.2%, F1=95.2%
+  Global: Acc=94.16%, F1=94.91%, F1(M)=72.62%
+  ✓ Best: 94.91%
+
+Round 4/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=18.0s, battery=88.8%, F1=93.9%
+  ahu_2: epochs=4, time=18.6s, battery=73.7%, F1=95.7%
+  ahu_3: epochs=4, time=19.2s, battery=93.7%, F1=99.0%
+  ahu_4: epochs=4, time=18.2s, battery=58.8%, F1=99.9%
+  ahu_5: epochs=4, time=17.8s, battery=83.8%, F1=97.9%
+  ahu_6: epochs=4, time=19.8s, battery=68.7%, F1=100.0%
+  ahu_8: epochs=4, time=16.5s, battery=63.9%, F1=100.0%
+  Global: Acc=92.52%, F1=93.41%, F1(M)=62.76%
+
+Round 5/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=18.2s, battery=88.5%, F1=95.9%
+  ahu_2: epochs=4, time=19.0s, battery=73.4%, F1=95.7%
+  ahu_3: epochs=4, time=19.5s, battery=93.4%, F1=99.0%
+  ahu_4: epochs=4, time=18.3s, battery=58.5%, F1=98.9%
+  ahu_5: epochs=4, time=17.6s, battery=83.5%, F1=98.0%
+  ahu_6: epochs=4, time=19.4s, battery=68.4%, F1=100.0%
+  ahu_8: epochs=4, time=16.3s, battery=63.6%, F1=95.4%
+  Global: Acc=91.01%, F1=92.13%, F1(M)=56.49%
+
+Round 6/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=18.1s, battery=88.2%, F1=95.9%
+  ahu_2: epochs=4, time=18.8s, battery=73.1%, F1=99.3%
+  ahu_3: epochs=4, time=19.1s, battery=93.1%, F1=98.2%
+  ahu_4: epochs=4, time=18.7s, battery=58.2%, F1=99.9%
+  ahu_5: epochs=4, time=18.0s, battery=83.2%, F1=98.1%
+  ahu_6: epochs=4, time=19.7s, battery=68.0%, F1=100.0%
+  ahu_8: epochs=4, time=16.9s, battery=63.3%, F1=100.0%
+  Global: Acc=93.02%, F1=93.79%, F1(M)=65.25%
+
+Round 7/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=18.4s, battery=87.9%, F1=94.9%
+  ahu_2: epochs=4, time=18.5s, battery=72.8%, F1=98.9%
+  ahu_3: epochs=4, time=19.0s, battery=92.8%, F1=99.0%
+  ahu_4: epochs=4, time=18.1s, battery=57.9%, F1=99.9%
+  ahu_5: epochs=4, time=17.9s, battery=82.9%, F1=98.1%
+  ahu_6: epochs=4, time=19.7s, battery=67.7%, F1=100.0%
+  ahu_8: epochs=4, time=16.7s, battery=63.1%, F1=92.2%
+  Global: Acc=89.01%, F1=90.22%, F1(M)=46.85%
+
+Round 8/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=18.2s, battery=87.6%, F1=95.9%
+  ahu_2: epochs=4, time=18.6s, battery=72.5%, F1=96.1%
+  ahu_3: epochs=4, time=19.4s, battery=92.4%, F1=99.0%
+  ahu_4: epochs=4, time=18.0s, battery=57.6%, F1=99.1%
+  ahu_5: epochs=4, time=17.4s, battery=82.6%, F1=97.1%
+  ahu_6: epochs=4, time=19.4s, battery=67.4%, F1=100.0%
+  ahu_8: epochs=4, time=16.8s, battery=62.8%, F1=100.0%
+  Global: Acc=93.14%, F1=93.88%, F1(M)=66.25%
+
+Round 9/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=18.1s, battery=87.3%, F1=95.9%
+  ahu_2: epochs=4, time=18.6s, battery=72.2%, F1=99.3%
+  ahu_3: epochs=4, time=19.2s, battery=92.1%, F1=99.0%
+  ahu_4: epochs=4, time=18.1s, battery=57.3%, F1=99.9%
+  ahu_5: epochs=4, time=17.3s, battery=82.4%, F1=95.4%
+  ahu_6: epochs=4, time=19.7s, battery=67.1%, F1=100.0%
+  ahu_8: epochs=4, time=16.7s, battery=62.5%, F1=100.0%
+  Global: Acc=92.95%, F1=93.80%, F1(M)=65.90%
+
+Round 10/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=18.2s, battery=87.0%, F1=95.9%
+  ahu_2: epochs=4, time=19.1s, battery=71.9%, F1=95.7%
+  ahu_3: epochs=4, time=19.6s, battery=91.8%, F1=97.8%
+  ahu_4: epochs=4, time=18.3s, battery=57.0%, F1=99.9%
+  ahu_5: epochs=4, time=17.4s, battery=82.1%, F1=98.1%
+  ahu_6: epochs=4, time=19.4s, battery=66.7%, F1=100.0%
+  ahu_8: epochs=4, time=16.5s, battery=62.2%, F1=99.5%
+  Global: Acc=92.67%, F1=93.58%, F1(M)=64.30%
+
+Round 11/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=17.9s, battery=99.7%, F1=95.5%
+  ahu_2: epochs=4, time=18.7s, battery=86.6%, F1=99.3%
+  ahu_3: epochs=4, time=19.2s, battery=99.7%, F1=99.0%
+  ahu_4: epochs=4, time=18.1s, battery=71.7%, F1=99.9%
+  ahu_5: epochs=4, time=17.4s, battery=96.8%, F1=98.1%
+  ahu_6: epochs=4, time=19.6s, battery=81.4%, F1=100.0%
+  ahu_8: epochs=4, time=16.8s, battery=77.0%, F1=98.3%
+  Global: Acc=93.59%, F1=94.34%, F1(M)=68.93%
+
+Round 12/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=18.4s, battery=99.4%, F1=94.6%
+  ahu_2: epochs=4, time=19.1s, battery=86.2%, F1=95.7%
+  ahu_3: epochs=4, time=19.3s, battery=99.4%, F1=99.0%
+  ahu_4: epochs=4, time=18.1s, battery=71.4%, F1=99.9%
+  ahu_5: epochs=4, time=17.4s, battery=96.5%, F1=98.1%
+  ahu_6: epochs=4, time=19.6s, battery=81.1%, F1=100.0%
+  ahu_8: epochs=4, time=16.3s, battery=76.7%, F1=95.9%
+  Global: Acc=92.01%, F1=93.14%, F1(M)=63.09%
+
+Round 13/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=18.3s, battery=99.1%, F1=95.9%
+  ahu_2: epochs=4, time=18.5s, battery=85.9%, F1=96.3%
+  ahu_3: epochs=4, time=19.0s, battery=99.0%, F1=99.0%
+  ahu_4: epochs=4, time=18.0s, battery=71.1%, F1=99.9%
+  ahu_5: epochs=4, time=17.5s, battery=96.2%, F1=98.1%
+  ahu_6: epochs=4, time=19.6s, battery=80.8%, F1=100.0%
+  ahu_8: epochs=4, time=16.2s, battery=76.4%, F1=100.0%
+  Global: Acc=93.68%, F1=94.44%, F1(M)=69.85%
+
+Round 14/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=18.0s, battery=98.8%, F1=97.7%
+  ahu_2: epochs=4, time=18.5s, battery=85.6%, F1=94.9%
+  ahu_3: epochs=4, time=19.3s, battery=98.7%, F1=99.0%
+  ahu_4: epochs=4, time=18.3s, battery=70.8%, F1=99.9%
+  ahu_5: epochs=4, time=17.7s, battery=95.9%, F1=98.1%
+  ahu_6: epochs=4, time=19.7s, battery=80.4%, F1=99.5%
+  ahu_8: epochs=4, time=16.5s, battery=76.1%, F1=99.9%
+  Global: Acc=93.54%, F1=94.31%, F1(M)=69.18%
+
+Round 15/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=17.8s, battery=98.5%, F1=95.5%
+  ahu_2: epochs=4, time=18.7s, battery=85.3%, F1=95.7%
+  ahu_3: epochs=4, time=18.8s, battery=98.4%, F1=99.0%
+  ahu_4: epochs=4, time=17.7s, battery=70.5%, F1=94.4%
+  ahu_5: epochs=4, time=17.4s, battery=95.6%, F1=98.1%
+  ahu_6: epochs=4, time=19.4s, battery=80.1%, F1=100.0%
+  ahu_8: epochs=4, time=16.1s, battery=75.9%, F1=100.0%
+  Global: Acc=92.39%, F1=93.42%, F1(M)=64.11%
+
+Round 16/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=17.8s, battery=98.2%, F1=97.7%
+  ahu_2: epochs=4, time=18.4s, battery=85.0%, F1=95.7%
+  ahu_3: epochs=4, time=19.1s, battery=98.1%, F1=99.0%
+  ahu_4: epochs=4, time=18.2s, battery=70.2%, F1=98.2%
+  ahu_5: epochs=4, time=17.6s, battery=95.3%, F1=98.1%
+  ahu_6: epochs=4, time=19.5s, battery=79.8%, F1=100.0%
+  ahu_8: epochs=4, time=16.5s, battery=75.6%, F1=100.0%
+  Global: Acc=92.72%, F1=93.59%, F1(M)=64.42%
+
+Round 17/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=18.0s, battery=97.9%, F1=95.9%
+  ahu_2: epochs=4, time=18.6s, battery=84.7%, F1=98.2%
+  ahu_3: epochs=4, time=18.8s, battery=97.8%, F1=95.3%
+  ahu_4: epochs=4, time=18.7s, battery=69.8%, F1=98.2%
+  ahu_5: epochs=4, time=17.5s, battery=95.0%, F1=97.9%
+  ahu_6: epochs=4, time=19.5s, battery=79.5%, F1=100.0%
+  ahu_8: epochs=4, time=16.3s, battery=75.3%, F1=100.0%
+  Global: Acc=91.80%, F1=92.83%, F1(M)=61.02%
+
+Round 18/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=18.1s, battery=97.6%, F1=97.5%
+  ahu_2: epochs=4, time=18.6s, battery=84.4%, F1=97.5%
+  ahu_3: epochs=4, time=19.1s, battery=97.5%, F1=99.0%
+  ahu_4: epochs=4, time=18.0s, battery=69.5%, F1=99.9%
+  ahu_5: epochs=4, time=17.2s, battery=94.7%, F1=98.1%
+  ahu_6: epochs=4, time=19.8s, battery=79.1%, F1=100.0%
+  ahu_8: epochs=4, time=16.3s, battery=75.1%, F1=100.0%
+  Global: Acc=92.86%, F1=93.57%, F1(M)=63.05%
+
+Round 19/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=18.0s, battery=97.3%, F1=95.9%
+  ahu_2: epochs=4, time=18.6s, battery=84.1%, F1=96.7%
+  ahu_3: epochs=4, time=19.4s, battery=97.1%, F1=95.3%
+  ahu_4: epochs=4, time=18.0s, battery=69.2%, F1=99.9%
+  ahu_5: epochs=4, time=17.3s, battery=94.4%, F1=95.6%
+  ahu_6: epochs=4, time=19.5s, battery=78.8%, F1=100.0%
+  ahu_8: epochs=4, time=16.3s, battery=74.8%, F1=100.0%
+  Global: Acc=90.82%, F1=92.30%, F1(M)=59.32%
+
+Round 20/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=17.8s, battery=97.0%, F1=97.5%
+  ahu_2: epochs=4, time=18.5s, battery=83.8%, F1=97.8%
+  ahu_3: epochs=4, time=18.9s, battery=96.8%, F1=99.0%
+  ahu_4: epochs=4, time=18.0s, battery=68.9%, F1=99.9%
+  ahu_5: epochs=4, time=17.3s, battery=94.2%, F1=98.1%
+  ahu_6: epochs=4, time=19.3s, battery=78.5%, F1=100.0%
+  ahu_8: epochs=4, time=16.3s, battery=74.5%, F1=97.0%
+  Global: Acc=93.36%, F1=93.97%, F1(M)=65.61%
+
+Round 21/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=18.1s, battery=99.7%, F1=95.9%
+  ahu_2: epochs=4, time=18.5s, battery=98.5%, F1=97.4%
+  ahu_3: epochs=4, time=19.5s, battery=99.7%, F1=97.3%
+  ahu_4: epochs=4, time=17.9s, battery=83.6%, F1=95.5%
+  ahu_5: epochs=4, time=17.3s, battery=99.7%, F1=98.1%
+  ahu_6: epochs=4, time=19.5s, battery=93.2%, F1=100.0%
+  ahu_8: epochs=4, time=16.2s, battery=89.2%, F1=100.0%
+  Global: Acc=91.28%, F1=92.47%, F1(M)=58.57%
+
+Round 22/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=17.8s, battery=99.4%, F1=95.9%
+  ahu_2: epochs=4, time=18.6s, battery=98.2%, F1=99.3%
+  ahu_3: epochs=4, time=19.1s, battery=99.4%, F1=94.2%
+  ahu_4: epochs=4, time=17.9s, battery=83.3%, F1=95.4%
+  ahu_5: epochs=4, time=17.6s, battery=99.4%, F1=97.1%
+  ahu_6: epochs=4, time=19.2s, battery=92.8%, F1=100.0%
+  ahu_8: epochs=4, time=16.5s, battery=89.0%, F1=99.4%
+  Global: Acc=89.75%, F1=90.91%, F1(M)=50.11%
+
+Round 23/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=18.2s, battery=99.1%, F1=94.6%
+  ahu_2: epochs=4, time=18.9s, battery=97.8%, F1=95.7%
+  ahu_3: epochs=4, time=18.8s, battery=99.0%, F1=99.0%
+  ahu_4: epochs=4, time=18.1s, battery=83.0%, F1=99.9%
+  ahu_5: epochs=4, time=17.3s, battery=99.1%, F1=98.1%
+  ahu_6: epochs=4, time=19.7s, battery=92.5%, F1=100.0%
+  ahu_8: epochs=4, time=16.1s, battery=88.7%, F1=100.0%
+  Global: Acc=93.78%, F1=94.42%, F1(M)=69.29%
+
+Round 24/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=17.8s, battery=98.8%, F1=92.5%
+  ahu_2: epochs=4, time=18.8s, battery=97.5%, F1=96.8%
+  ahu_3: epochs=4, time=19.1s, battery=98.7%, F1=99.0%
+  ahu_4: epochs=4, time=17.8s, battery=82.7%, F1=99.9%
+  ahu_5: epochs=4, time=17.1s, battery=98.8%, F1=98.1%
+  ahu_6: epochs=4, time=19.4s, battery=92.2%, F1=100.0%
+  ahu_8: epochs=4, time=16.4s, battery=88.4%, F1=100.0%
+  Global: Acc=92.44%, F1=93.25%, F1(M)=62.11%
+
+Round 25/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=18.0s, battery=98.5%, F1=99.0%
+  ahu_2: epochs=4, time=18.5s, battery=97.2%, F1=95.7%
+  ahu_3: epochs=4, time=18.8s, battery=98.4%, F1=94.5%
+  ahu_4: epochs=4, time=17.9s, battery=82.4%, F1=99.9%
+  ahu_5: epochs=4, time=17.4s, battery=98.6%, F1=97.1%
+  ahu_6: epochs=4, time=19.5s, battery=91.9%, F1=100.0%
+  ahu_8: epochs=4, time=16.3s, battery=88.2%, F1=94.8%
+  Global: Acc=91.49%, F1=92.40%, F1(M)=56.65%
+
+Round 26/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=18.1s, battery=98.2%, F1=94.3%
+  ahu_2: epochs=4, time=18.6s, battery=96.9%, F1=97.4%
+  ahu_3: epochs=4, time=18.9s, battery=98.1%, F1=99.0%
+  ahu_4: epochs=4, time=17.9s, battery=82.1%, F1=99.9%
+  ahu_5: epochs=4, time=17.3s, battery=98.3%, F1=98.1%
+  ahu_6: epochs=4, time=19.1s, battery=91.5%, F1=100.0%
+  ahu_8: epochs=4, time=16.2s, battery=87.9%, F1=100.0%
+  Global: Acc=94.42%, F1=95.00%, F1(M)=73.68%
+  ✓ Best: 95.00%
+
+Round 27/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=17.6s, battery=97.9%, F1=95.5%
+  ahu_2: epochs=4, time=18.6s, battery=96.6%, F1=96.1%
+  ahu_3: epochs=4, time=18.9s, battery=97.8%, F1=99.0%
+  ahu_4: epochs=4, time=17.9s, battery=81.8%, F1=99.6%
+  ahu_5: epochs=4, time=17.1s, battery=98.0%, F1=98.0%
+  ahu_6: epochs=4, time=19.0s, battery=91.2%, F1=100.0%
+  ahu_8: epochs=4, time=16.5s, battery=87.6%, F1=99.6%
+  Global: Acc=91.82%, F1=92.80%, F1(M)=60.38%
+
+Round 28/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=17.8s, battery=97.6%, F1=95.8%
+  ahu_2: epochs=4, time=18.5s, battery=96.3%, F1=95.7%
+  ahu_3: epochs=4, time=19.0s, battery=97.5%, F1=95.4%
+  ahu_4: epochs=4, time=18.1s, battery=81.5%, F1=99.9%
+  ahu_5: epochs=4, time=17.4s, battery=97.7%, F1=98.1%
+  ahu_6: epochs=4, time=19.1s, battery=90.9%, F1=100.0%
+  ahu_8: epochs=4, time=16.1s, battery=87.3%, F1=100.0%
+  Global: Acc=92.20%, F1=93.13%, F1(M)=61.65%
+
+Round 29/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=17.9s, battery=97.3%, F1=95.9%
+  ahu_2: epochs=4, time=18.6s, battery=96.0%, F1=95.7%
+  ahu_3: epochs=4, time=19.2s, battery=97.1%, F1=94.8%
+  ahu_4: epochs=4, time=18.1s, battery=81.2%, F1=99.7%
+  ahu_5: epochs=4, time=17.2s, battery=97.4%, F1=98.1%
+  ahu_6: epochs=4, time=19.3s, battery=90.6%, F1=100.0%
+  ahu_8: epochs=4, time=16.2s, battery=87.1%, F1=98.2%
+  Global: Acc=89.73%, F1=90.94%, F1(M)=50.55%
+
+Round 30/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=18.0s, battery=97.0%, F1=95.9%
+  ahu_2: epochs=4, time=18.5s, battery=95.7%, F1=94.6%
+  ahu_3: epochs=4, time=19.2s, battery=96.8%, F1=99.0%
+  ahu_4: epochs=4, time=18.0s, battery=80.9%, F1=99.9%
+  ahu_5: epochs=4, time=17.5s, battery=97.1%, F1=98.1%
+  ahu_6: epochs=4, time=19.0s, battery=90.3%, F1=100.0%
+  ahu_8: epochs=4, time=16.4s, battery=86.8%, F1=100.0%
+  Global: Acc=92.49%, F1=93.40%, F1(M)=63.91%
+
+Round 31/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=18.0s, battery=99.7%, F1=97.5%
+  ahu_2: epochs=4, time=18.6s, battery=99.7%, F1=94.6%
+  ahu_3: epochs=4, time=18.9s, battery=99.7%, F1=94.5%
+  ahu_4: epochs=4, time=18.2s, battery=95.6%, F1=99.9%
+  ahu_5: epochs=4, time=17.5s, battery=99.7%, F1=98.1%
+  ahu_6: epochs=4, time=19.1s, battery=99.7%, F1=100.0%
+  ahu_8: epochs=4, time=16.3s, battery=99.7%, F1=100.0%
+  Global: Acc=92.50%, F1=93.16%, F1(M)=61.59%
+
+Round 32/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=17.7s, battery=99.4%, F1=98.0%
+  ahu_2: epochs=4, time=18.4s, battery=99.4%, F1=98.1%
+  ahu_3: epochs=4, time=19.0s, battery=99.4%, F1=98.2%
+  ahu_4: epochs=4, time=17.8s, battery=95.3%, F1=99.9%
+  ahu_5: epochs=4, time=17.5s, battery=99.4%, F1=97.3%
+  ahu_6: epochs=4, time=19.3s, battery=99.4%, F1=100.0%
+  ahu_8: epochs=4, time=16.7s, battery=99.4%, F1=96.2%
+  Global: Acc=93.77%, F1=94.21%, F1(M)=65.88%
+
+Round 33/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=18.2s, battery=99.1%, F1=96.9%
+  ahu_2: epochs=4, time=18.6s, battery=99.1%, F1=95.7%
+  ahu_3: epochs=4, time=18.6s, battery=99.1%, F1=97.6%
+  ahu_4: epochs=4, time=18.1s, battery=95.0%, F1=99.9%
+  ahu_5: epochs=4, time=17.2s, battery=99.1%, F1=98.1%
+  ahu_6: epochs=4, time=19.3s, battery=99.0%, F1=100.0%
+  ahu_8: epochs=4, time=16.4s, battery=99.2%, F1=90.2%
+  Global: Acc=92.84%, F1=93.63%, F1(M)=64.82%
+
+Round 34/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=18.4s, battery=98.8%, F1=95.9%
+  ahu_2: epochs=4, time=18.6s, battery=98.8%, F1=95.7%
+  ahu_3: epochs=4, time=18.9s, battery=98.7%, F1=95.3%
+  ahu_4: epochs=4, time=18.3s, battery=94.7%, F1=99.9%
+  ahu_5: epochs=4, time=17.3s, battery=98.8%, F1=95.6%
+  ahu_6: epochs=4, time=19.3s, battery=98.7%, F1=100.0%
+  ahu_8: epochs=4, time=16.2s, battery=98.9%, F1=91.0%
+  Global: Acc=92.18%, F1=93.15%, F1(M)=62.23%
+
+Round 35/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=18.0s, battery=98.5%, F1=97.8%
+  ahu_2: epochs=4, time=19.1s, battery=98.4%, F1=94.4%
+  ahu_3: epochs=4, time=19.0s, battery=98.4%, F1=99.0%
+  ahu_4: epochs=4, time=17.9s, battery=94.4%, F1=99.9%
+  ahu_5: epochs=4, time=17.3s, battery=98.6%, F1=98.1%
+  ahu_6: epochs=4, time=19.1s, battery=98.4%, F1=100.0%
+  ahu_8: epochs=4, time=16.1s, battery=98.6%, F1=100.0%
+  Global: Acc=92.13%, F1=92.89%, F1(M)=58.79%
+
+Round 36/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=17.7s, battery=98.2%, F1=98.5%
+  ahu_2: epochs=4, time=18.4s, battery=98.1%, F1=94.6%
+  ahu_3: epochs=4, time=18.8s, battery=98.1%, F1=98.2%
+  ahu_4: epochs=4, time=17.8s, battery=94.1%, F1=99.9%
+  ahu_5: epochs=4, time=17.4s, battery=98.3%, F1=98.1%
+  ahu_6: epochs=4, time=19.5s, battery=98.1%, F1=100.0%
+  ahu_8: epochs=4, time=16.3s, battery=98.4%, F1=100.0%
+  Global: Acc=94.45%, F1=94.95%, F1(M)=73.45%
+
+Round 37/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=17.6s, battery=97.9%, F1=92.5%
+  ahu_2: epochs=4, time=18.5s, battery=97.8%, F1=99.3%
+  ahu_3: epochs=4, time=19.0s, battery=97.8%, F1=99.0%
+  ahu_4: epochs=4, time=17.9s, battery=93.8%, F1=99.9%
+  ahu_5: epochs=4, time=17.2s, battery=98.0%, F1=98.1%
+  ahu_6: epochs=4, time=19.5s, battery=97.7%, F1=100.0%
+  ahu_8: epochs=4, time=16.1s, battery=98.1%, F1=100.0%
+  Global: Acc=94.78%, F1=95.23%, F1(M)=74.58%
+  ✓ Best: 95.23%
+
+Round 38/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=18.1s, battery=97.6%, F1=95.9%
+  ahu_2: epochs=4, time=18.5s, battery=97.5%, F1=93.8%
+  ahu_3: epochs=4, time=18.6s, battery=97.5%, F1=99.0%
+  ahu_4: epochs=4, time=18.0s, battery=93.5%, F1=99.9%
+  ahu_5: epochs=4, time=17.2s, battery=97.7%, F1=98.1%
+  ahu_6: epochs=4, time=19.3s, battery=97.4%, F1=100.0%
+  ahu_8: epochs=4, time=16.1s, battery=97.8%, F1=96.9%
+  Global: Acc=94.40%, F1=94.94%, F1(M)=73.23%
+
+Round 39/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=17.9s, battery=97.3%, F1=98.7%
+  ahu_2: epochs=4, time=18.5s, battery=97.2%, F1=99.2%
+  ahu_3: epochs=4, time=18.9s, battery=97.2%, F1=99.0%
+  ahu_4: epochs=4, time=18.1s, battery=93.2%, F1=99.9%
+  ahu_5: epochs=4, time=17.2s, battery=97.4%, F1=98.1%
+  ahu_6: epochs=4, time=19.5s, battery=97.1%, F1=100.0%
+  ahu_8: epochs=4, time=16.2s, battery=97.6%, F1=94.8%
+  Global: Acc=93.59%, F1=94.17%, F1(M)=66.98%
+
+Round 40/40
+  Eligible: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+  ahu_1: epochs=4, time=17.9s, battery=97.0%, F1=95.9%
+  ahu_2: epochs=4, time=18.8s, battery=96.9%, F1=95.7%
+  ahu_3: epochs=4, time=19.0s, battery=96.9%, F1=94.5%
+  ahu_4: epochs=4, time=18.1s, battery=92.9%, F1=99.9%
+  ahu_5: epochs=4, time=17.2s, battery=97.1%, F1=97.7%
+  ahu_6: epochs=4, time=19.0s, battery=96.8%, F1=97.2%
+  ahu_8: epochs=4, time=16.6s, battery=97.3%, F1=100.0%
+  Global: Acc=94.66%, F1=95.18%, F1(M)=75.04%
+
+================================================================================
+FINAL RESULTS
+================================================================================
+Accuracy: 94.78%
+F1 (Weighted): 95.23%
+F1 (Macro): 74.58%
+
+Confusion Matrix:
+[[7743   85    0  236]
+ [   0 1325    0    0]
+ [   0   74  214    0]
+ [   0    0  122  107]]
+
+Per-Class:
+  class_0: TP=7743 TN=1842 FP=  0 FN=321 | P=1.000 R=0.960 F1=0.980
+  class_1: TP=1325 TN=8422 FP=159 FN=  0 | P=0.893 R=1.000 F1=0.943
+  class_2: TP= 214 TN=9496 FP=122 FN= 74 | P=0.637 R=0.743 F1=0.686
+  class_3: TP= 107 TN=9441 FP=236 FN=122 | P=0.312 R=0.467 F1=0.374
+
+              precision    recall  f1-score   support
+
+           0       1.00      0.96      0.98      8064
+           1       0.89      1.00      0.94      1325
+           2       0.64      0.74      0.69       288
+           3       0.31      0.47      0.37       229
+
+    accuracy                           0.95      9906
+   macro avg       0.71      0.79      0.75      9906
+weighted avg       0.96      0.95      0.95      9906
+
+
+================================================================================
+EDGE DEVICE STATS
+================================================================================
+ahu_1: rounds=40, total_time=721.3s, final_battery=100.0%
+ahu_2: rounds=40, total_time=745.9s, final_battery=100.0%
+ahu_3: rounds=40, total_time=762.2s, final_battery=100.0%
+ahu_4: rounds=40, total_time=723.4s, final_battery=100.0%
+ahu_5: rounds=40, total_time=696.7s, final_battery=100.0%
+ahu_6: rounds=40, total_time=777.1s, final_battery=100.0%
+ahu_8: rounds=40, total_time=655.3s, final_battery=100.0%
+
+✓ Results saved to: results_edge_aware_full_edge_aware_full_moderate_conservative_offload_network_based_20251117_194301.json
+✓ Model saved to: model_edge_aware_full_edge_aware_full_moderate_conservative_offload_network_based_20251117_194301.pth
+================================================================================

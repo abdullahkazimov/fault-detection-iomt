@@ -1,0 +1,475 @@
+nohup: ignoring input
+Testing model creation...
+Model parameters: 6,749,444 (~6.7M)
+Input shape: torch.Size([32, 15])
+Output shape: torch.Size([32, 4])
+✓ Model works!
+Random seed set to 42 for reproducibility
+
+================================================================================
+FEDAVG - CUDA VERSION
+================================================================================
+Device: cuda
+CUDA Device: Tesla T4
+
+Loading data...
+AHUs: ['ahu_1', 'ahu_2', 'ahu_3', 'ahu_4', 'ahu_5', 'ahu_6', 'ahu_8']
+ahu_1: train=21324, val=1239
+ahu_2: train=22112, val=1238
+ahu_3: train=22616, val=1239
+ahu_4: train=21364, val=1239
+ahu_5: train=20572, val=1238
+ahu_6: train=22980, val=1239
+ahu_8: train=19216, val=1239
+Test: 9906
+
+Creating model...
+Checking baseline model at best_model_centralized_baseline.pth...
+  Baseline model has 4 classes
+Using num_classes=4 from baseline model
+Input dim: 16, Num classes: 4
+Loading baseline model weights from best_model_centralized_baseline.pth...
+✓ Baseline model loaded successfully!
+Parameters: 6,749,700
+
+Training FedAvg for 40 rounds...
+
+Round 1/40
+  ahu_1: F1=96.2%
+  ahu_2: F1=99.3%
+  ahu_3: F1=99.0%
+  ahu_4: F1=99.9%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=100.0%
+  Global: Acc=88.36%, F1=90.23%, F1(M)=50.84%
+  ✓ Best: 90.23%
+
+Round 2/40
+  ahu_1: F1=96.5%
+  ahu_2: F1=95.7%
+  ahu_3: F1=96.0%
+  ahu_4: F1=99.9%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=98.8%
+  Global: Acc=90.89%, F1=92.33%, F1(M)=59.76%
+  ✓ Best: 92.33%
+
+Round 3/40
+  ahu_1: F1=94.9%
+  ahu_2: F1=97.1%
+  ahu_3: F1=99.0%
+  ahu_4: F1=99.9%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=98.9%
+  Global: Acc=94.17%, F1=94.80%, F1(M)=73.84%
+  ✓ Best: 94.80%
+
+Round 4/40
+  ahu_1: F1=95.9%
+  ahu_2: F1=95.7%
+  ahu_3: F1=99.0%
+  ahu_4: F1=99.9%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=100.0%
+  Global: Acc=94.87%, F1=95.44%, F1(M)=77.91%
+  ✓ Best: 95.44%
+
+Round 5/40
+  ahu_1: F1=95.6%
+  ahu_2: F1=99.3%
+  ahu_3: F1=99.0%
+  ahu_4: F1=99.9%
+  ahu_5: F1=97.3%
+  ahu_6: F1=100.0%
+  ahu_8: F1=97.6%
+  Global: Acc=94.98%, F1=95.44%, F1(M)=77.36%
+  ✓ Best: 95.44%
+
+Round 6/40
+  ahu_1: F1=95.9%
+  ahu_2: F1=96.3%
+  ahu_3: F1=97.2%
+  ahu_4: F1=99.9%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=100.0%
+  Global: Acc=94.50%, F1=95.03%, F1(M)=74.85%
+
+Round 7/40
+  ahu_1: F1=95.9%
+  ahu_2: F1=99.2%
+  ahu_3: F1=99.0%
+  ahu_4: F1=99.8%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=98.9%
+  Global: Acc=94.51%, F1=95.03%, F1(M)=74.80%
+
+Round 8/40
+  ahu_1: F1=95.9%
+  ahu_2: F1=99.3%
+  ahu_3: F1=99.0%
+  ahu_4: F1=99.8%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=100.0%
+  Global: Acc=93.18%, F1=93.97%, F1(M)=67.92%
+
+Round 9/40
+  ahu_1: F1=98.9%
+  ahu_2: F1=99.3%
+  ahu_3: F1=99.0%
+  ahu_4: F1=99.9%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=100.0%
+  Global: Acc=97.00%, F1=97.26%, F1(M)=88.95%
+  ✓ Best: 97.26%
+
+Round 10/40
+  ahu_1: F1=97.1%
+  ahu_2: F1=97.2%
+  ahu_3: F1=99.0%
+  ahu_4: F1=99.9%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=100.0%
+  Global: Acc=95.19%, F1=95.68%, F1(M)=77.50%
+
+Round 11/40
+  ahu_1: F1=95.9%
+  ahu_2: F1=95.7%
+  ahu_3: F1=99.0%
+  ahu_4: F1=99.9%
+  ahu_5: F1=98.0%
+  ahu_6: F1=100.0%
+  ahu_8: F1=100.0%
+  Global: Acc=93.10%, F1=94.13%, F1(M)=70.28%
+
+Round 12/40
+  ahu_1: F1=95.9%
+  ahu_2: F1=95.7%
+  ahu_3: F1=98.0%
+  ahu_4: F1=99.9%
+  ahu_5: F1=97.3%
+  ahu_6: F1=100.0%
+  ahu_8: F1=96.5%
+  Global: Acc=94.07%, F1=94.75%, F1(M)=71.73%
+
+Round 13/40
+  ahu_1: F1=95.9%
+  ahu_2: F1=95.7%
+  ahu_3: F1=99.0%
+  ahu_4: F1=99.9%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=100.0%
+  Global: Acc=93.10%, F1=93.89%, F1(M)=66.03%
+
+Round 14/40
+  ahu_1: F1=95.9%
+  ahu_2: F1=96.3%
+  ahu_3: F1=99.0%
+  ahu_4: F1=99.9%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=100.0%
+  Global: Acc=93.19%, F1=94.06%, F1(M)=67.47%
+
+Round 15/40
+  ahu_1: F1=97.7%
+  ahu_2: F1=97.7%
+  ahu_3: F1=99.0%
+  ahu_4: F1=99.9%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=100.0%
+  Global: Acc=95.45%, F1=95.92%, F1(M)=79.52%
+
+Round 16/40
+  ahu_1: F1=95.9%
+  ahu_2: F1=95.7%
+  ahu_3: F1=97.3%
+  ahu_4: F1=99.8%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=100.0%
+  Global: Acc=94.12%, F1=94.88%, F1(M)=74.16%
+
+Round 17/40
+  ahu_1: F1=95.9%
+  ahu_2: F1=99.3%
+  ahu_3: F1=95.3%
+  ahu_4: F1=99.9%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=100.0%
+  Global: Acc=94.02%, F1=94.73%, F1(M)=72.37%
+
+Round 18/40
+  ahu_1: F1=95.9%
+  ahu_2: F1=95.7%
+  ahu_3: F1=97.4%
+  ahu_4: F1=99.9%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=98.5%
+  Global: Acc=93.70%, F1=94.40%, F1(M)=68.38%
+
+Round 19/40
+  ahu_1: F1=95.9%
+  ahu_2: F1=96.8%
+  ahu_3: F1=99.0%
+  ahu_4: F1=99.9%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=100.0%
+  Global: Acc=94.67%, F1=95.26%, F1(M)=74.91%
+
+Round 20/40
+  ahu_1: F1=95.9%
+  ahu_2: F1=99.3%
+  ahu_3: F1=99.0%
+  ahu_4: F1=99.9%
+  ahu_5: F1=97.9%
+  ahu_6: F1=100.0%
+  ahu_8: F1=100.0%
+  Global: Acc=91.52%, F1=92.18%, F1(M)=54.34%
+
+Round 21/40
+  ahu_1: F1=98.2%
+  ahu_2: F1=95.7%
+  ahu_3: F1=99.0%
+  ahu_4: F1=99.9%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=100.0%
+  Global: Acc=94.03%, F1=94.56%, F1(M)=69.73%
+
+Round 22/40
+  ahu_1: F1=95.9%
+  ahu_2: F1=98.0%
+  ahu_3: F1=99.0%
+  ahu_4: F1=99.9%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=100.0%
+  Global: Acc=94.94%, F1=95.53%, F1(M)=77.26%
+
+Round 23/40
+  ahu_1: F1=99.0%
+  ahu_2: F1=95.7%
+  ahu_3: F1=99.0%
+  ahu_4: F1=99.9%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=98.5%
+  Global: Acc=93.74%, F1=94.39%, F1(M)=69.34%
+
+Round 24/40
+  ahu_1: F1=95.9%
+  ahu_2: F1=97.1%
+  ahu_3: F1=99.0%
+  ahu_4: F1=99.9%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=100.0%
+  Global: Acc=94.59%, F1=95.15%, F1(M)=74.26%
+
+Round 25/40
+  ahu_1: F1=93.0%
+  ahu_2: F1=94.6%
+  ahu_3: F1=98.3%
+  ahu_4: F1=98.2%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=100.0%
+  Global: Acc=92.80%, F1=93.65%, F1(M)=65.89%
+
+Round 26/40
+  ahu_1: F1=95.1%
+  ahu_2: F1=99.3%
+  ahu_3: F1=96.0%
+  ahu_4: F1=99.9%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=96.5%
+  Global: Acc=93.63%, F1=94.19%, F1(M)=66.57%
+
+Round 27/40
+  ahu_1: F1=95.6%
+  ahu_2: F1=99.2%
+  ahu_3: F1=95.3%
+  ahu_4: F1=99.9%
+  ahu_5: F1=97.6%
+  ahu_6: F1=100.0%
+  ahu_8: F1=99.2%
+  Global: Acc=95.24%, F1=95.69%, F1(M)=78.13%
+
+Round 28/40
+  ahu_1: F1=98.0%
+  ahu_2: F1=96.2%
+  ahu_3: F1=99.0%
+  ahu_4: F1=99.9%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=100.0%
+  Global: Acc=94.96%, F1=95.37%, F1(M)=74.71%
+
+Round 29/40
+  ahu_1: F1=98.9%
+  ahu_2: F1=97.0%
+  ahu_3: F1=99.0%
+  ahu_4: F1=97.9%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=100.0%
+  Global: Acc=94.95%, F1=95.42%, F1(M)=74.92%
+
+Round 30/40
+  ahu_1: F1=95.9%
+  ahu_2: F1=99.3%
+  ahu_3: F1=98.9%
+  ahu_4: F1=99.9%
+  ahu_5: F1=97.8%
+  ahu_6: F1=100.0%
+  ahu_8: F1=100.0%
+  Global: Acc=94.41%, F1=94.93%, F1(M)=72.60%
+
+Round 31/40
+  ahu_1: F1=96.3%
+  ahu_2: F1=99.3%
+  ahu_3: F1=98.9%
+  ahu_4: F1=99.9%
+  ahu_5: F1=95.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=97.2%
+  Global: Acc=94.62%, F1=95.15%, F1(M)=74.57%
+
+Round 32/40
+  ahu_1: F1=95.9%
+  ahu_2: F1=99.3%
+  ahu_3: F1=98.9%
+  ahu_4: F1=99.9%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=97.7%
+  Global: Acc=93.87%, F1=94.46%, F1(M)=69.12%
+
+Round 33/40
+  ahu_1: F1=95.9%
+  ahu_2: F1=99.3%
+  ahu_3: F1=98.9%
+  ahu_4: F1=99.9%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=98.2%
+  Global: Acc=94.35%, F1=94.91%, F1(M)=72.50%
+
+Round 34/40
+  ahu_1: F1=95.9%
+  ahu_2: F1=98.6%
+  ahu_3: F1=99.0%
+  ahu_4: F1=99.9%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=98.8%
+  Global: Acc=96.60%, F1=96.95%, F1(M)=88.02%
+
+Round 35/40
+  ahu_1: F1=95.9%
+  ahu_2: F1=99.3%
+  ahu_3: F1=99.0%
+  ahu_4: F1=98.3%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=100.0%
+  Global: Acc=91.61%, F1=92.53%, F1(M)=57.31%
+
+Round 36/40
+  ahu_1: F1=95.9%
+  ahu_2: F1=97.7%
+  ahu_3: F1=96.6%
+  ahu_4: F1=98.2%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=100.0%
+  Global: Acc=92.14%, F1=92.97%, F1(M)=61.32%
+
+Round 37/40
+  ahu_1: F1=92.6%
+  ahu_2: F1=99.3%
+  ahu_3: F1=99.0%
+  ahu_4: F1=99.9%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=95.6%
+  Global: Acc=94.39%, F1=94.93%, F1(M)=72.63%
+
+Round 38/40
+  ahu_1: F1=95.9%
+  ahu_2: F1=99.3%
+  ahu_3: F1=99.0%
+  ahu_4: F1=99.9%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=100.0%
+  Global: Acc=94.45%, F1=94.97%, F1(M)=72.47%
+
+Round 39/40
+  ahu_1: F1=97.1%
+  ahu_2: F1=95.7%
+  ahu_3: F1=98.4%
+  ahu_4: F1=99.9%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=100.0%
+  Global: Acc=91.55%, F1=92.56%, F1(M)=59.24%
+
+Round 40/40
+  ahu_1: F1=97.1%
+  ahu_2: F1=99.3%
+  ahu_3: F1=95.3%
+  ahu_4: F1=99.9%
+  ahu_5: F1=98.1%
+  ahu_6: F1=100.0%
+  ahu_8: F1=100.0%
+  Global: Acc=90.27%, F1=91.19%, F1(M)=50.20%
+
+================================================================================
+FINAL RESULTS
+================================================================================
+Accuracy: 97.00%
+F1 (Weighted): 97.26%
+F1 (Macro): 88.95%
+
+Confusion Matrix:
+[[7801   85    0  178]
+ [   0 1325    0    0]
+ [   0    8  280    0]
+ [   0    0   26  203]]
+
+Per-Class:
+  class_0: TP=7801 TN=1842 FP=  0 FN=263 | P=1.000 R=0.967 F1=0.983
+  class_1: TP=1325 TN=8488 FP= 93 FN=  0 | P=0.934 R=1.000 F1=0.966
+  class_2: TP= 280 TN=9592 FP= 26 FN=  8 | P=0.915 R=0.972 F1=0.943
+  class_3: TP= 203 TN=9499 FP=178 FN= 26 | P=0.533 R=0.886 F1=0.666
+
+              precision    recall  f1-score   support
+
+           0       1.00      0.97      0.98      8064
+           1       0.93      1.00      0.97      1325
+           2       0.92      0.97      0.94       288
+           3       0.53      0.89      0.67       229
+
+    accuracy                           0.97      9906
+   macro avg       0.85      0.96      0.89      9906
+weighted avg       0.98      0.97      0.97      9906
+
+
+✓ Saved!
+================================================================================

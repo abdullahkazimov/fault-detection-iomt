@@ -1,0 +1,85 @@
+{
+  "ahu_stats": {
+    "ahu_1": {
+      "total_samples": 8255,
+      "class_distribution": {
+        "0": 7618,
+        "2": 588,
+        "1": 49
+      },
+      "num_classes": 3
+    },
+    "ahu_2": {
+      "total_samples": 8253,
+      "class_distribution": {
+        "0": 7898,
+        "1": 136,
+        "2": 217,
+        "3": 2
+      },
+      "num_classes": 4
+    },
+    "ahu_3": {
+      "total_samples": 8256,
+      "class_distribution": {
+        "0": 8078,
+        "2": 120,
+        "1": 53,
+        "3": 5
+      },
+      "num_classes": 4
+    },
+    "ahu_4": {
+      "total_samples": 8256,
+      "class_distribution": {
+        "0": 7650,
+        "1": 102,
+        "2": 503,
+        "3": 1
+      },
+      "num_classes": 4
+    },
+    "ahu_5": {
+      "total_samples": 8250,
+      "class_distribution": {
+        "0": 7348,
+        "1": 286,
+        "2": 491,
+        "3": 125
+      },
+      "num_classes": 4
+    },
+    "ahu_6": {
+      "total_samples": 8256,
+      "class_distribution": {
+        "1": 8209,
+        "0": 45,
+        "2": 2
+      },
+      "num_classes": 3
+    },
+    "ahu_7": {
+      "total_samples": 8256,
+      "class_distribution": {
+        "0": 8256
+      },
+      "num_classes": 1
+    },
+    "ahu_8": {
+      "total_samples": 8256,
+      "class_distribution": {
+        "3": 1392,
+        "0": 6864
+      },
+      "num_classes": 2
+    }
+  },
+  "excluded_ahus": [
+    "ahu_7"
+  ],
+  "smote_applied": {
+    "method": "smote",
+    "ratio": "auto",
+    "k_neighbors": 5
+  }
+}
