@@ -5,24 +5,36 @@ Fault Detection in air handling units (AHU) of hospital
 First, make sure you have installed Python 3.13.9.
 
 ## Training
-Create virtual envvironment and activate it:
+### Create virtual envvironment:
 ```bash
 python -m venv venv
 ```
 
-Install required libraries
+### Activate it (Windows)
+
+```bash
+venv\Scripts\activate
+```
+
+### Activate it (MacOS)
+
+```bash
+source venv/bin/activate
+```
+
+### Install required libraries
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Pre-precess the data
+### Pre-precess the data
 
 ```bash
 python preprocess.py
 ```
 
-Split and prepare data for training processes
+### Split and prepare data for training processes
 
 ```bash
 python train_centralized_baseline.py
@@ -37,7 +49,8 @@ python train_edge_aware_fl.py
 ```
 
 ## Data Streaming
-Run the code below and see real-time predictions of all three models, including plots.
+Run the code below and see real-time predictions of all three models, including plots and statistics.
+
 ```bash
 python stream.py
 ```
